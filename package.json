@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "superb-notes",
+  "description": "",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wumbo-dot/Superb-notes.git"
+  },
+  "author": "JT Gutierrez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wumbo-dot/Superb-notes/issues"
+  },
+  "homepage": "https://github.com/Wumbo-dot/Superb-notes#readme"
+}
