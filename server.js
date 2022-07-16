@@ -1,10 +1,9 @@
-const express = require('express');
-const path = require('path');
+const express = require("express");
+const path = require("path");
 
-const fs = require('fs');
-const util = require('util');
-const { notStrictEqual } = require('assert');
-const { parse } = require('path');
+const fs = require("fs");
+const util = require("util");
+
 
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
@@ -17,7 +16,7 @@ app.use(express.json());
 
 app.use(express.static("./Develop/public"));
 app.get("/api/notes", function(req, res) {
-    readFileAsync("./Develop/db/db.json", "utf-8").then(function(data) {
+    readFile("./Develop/db/db.json", "utf-8").then(function(data) {
         notes = [].concat(JSON.parse(data))
         res.json(notes);
     })
@@ -25,13 +24,13 @@ app.get("/api/notes", function(req, res) {
 
 app.post("/api/notes", function(req, res) {
     const note = req.body;
-    readFileAsync("./Develop/db/db.json", "utf-8").then(function(data) {
+    readFile("./Develop/db/db.json", "utf-8").then(function(data) {
         const notes = [].concat(JSON.parse(data));
         note.id = notes.length + 1;
         notes.push(note);
         return notes
     }).then(function(notes) {
-        writeFileAsync("./Develop/db/db.json", JSON.stringify(notes))
+        writeFile("./Develop/db/db.json", JSON.stringify(notes))
         res.json(note);
     })
 });
