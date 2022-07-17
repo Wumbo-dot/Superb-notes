@@ -22,5 +22,5 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 
 [GitHub repo](https://github.com/Wumbo-dot/Superb-notes)
 
-[Lin for Screencastify](https://drive.google.com/file/d/1LN6XYnmW3ceJR-L56q87lgYGbuXVuNUm/view)
+[Link for Screencastify](https://drive.google.com/file/d/1LN6XYnmW3ceJR-L56q87lgYGbuXVuNUm/view)
 
