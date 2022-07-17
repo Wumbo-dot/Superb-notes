@@ -42,22 +42,20 @@ app.post("/api/notes", (req, res) => {
     res.json(note);
     });
 
-app.delete("/api/notes/:id", (req, res) => {
-    const idToDelete = parseInt(req.params.id);
-    fs.readFileSync("./db/db.json", "utf-8").then(function(data) {
-        const notes = [].concat(JSON.parse(data));
-        const newNotesData = []
-        for(let i = 0; i<notes.length; i++) {
-            if(idToDelete !== notes[i].id) {
-                newNotesData.push(notes[i])
-            }
+    app.delete("/api/notes/:id", (req, res) =>{
+        let data = fs.readFileSync("./Develop/db/db.json", "utf-8");
+        const dataJson = JSON.parse(data);
+        const newNotes = data.JSON.filter((note) => {
+            return note.id !== req.params.id;
+        });
+        fs.writeFile("./Develop/db/db.json", JSON.stringify(newNotes), (err, text) => {
+            if(err) {
+                console.error(err);
+                return;
         }
-        return newNotesData
-    }).then(function(notes) {
-        fs.writeFileSync("./db/db.json", JSON.stringify(notes))
-        res.send('saved!');
-    }) 
-})
+    });
+        res.json(newNotes);
+    });
 
 app.get("/notes", function(req, res) {
     res.sendFile(path.join(__dirname, "./public/notes.html"));
